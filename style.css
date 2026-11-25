@@ -1,0 +1,359 @@
+body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #11111b;
+        color: #cdd6f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+}
+
+.container {
+        width: 100%;
+        max-width: 740px;
+        background: #1e1e2e;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #313244;
+}
+
+.hidden {
+        display: none !important;
+}
+
+/* Lobby */
+.login-box {
+        text-align: center;
+        padding: 30px 0 15px 0;
+}
+
+input {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #45475a;
+        background: #11111b;
+        color: white;
+        margin-right: 10px;
+}
+
+button {
+        padding: 10px 18px;
+        font-size: 14px;
+        cursor: pointer;
+        background: #89b4fa;
+        color: #11111b;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: 0.15s;
+}
+
+button:hover:not(:disabled) {
+        filter: brightness(1.1);
+}
+
+button:disabled {
+        background: #45475a;
+        color: #7f849c;
+        cursor: not-allowed;
+}
+
+/* Botão de Sair / Desistir */
+.btn-danger {
+        background: #f38ba8;
+        color: #11111b;
+        padding: 6px 12px;
+        font-size: 12px;
+}
+
+.btn-neutral {
+        background: #a6e3a1;
+        color: #11111b;
+        padding: 6px 12px;
+        font-size: 12px;
+}
+
+.btn-clear {
+        background: #313244;
+        color: #cdd6f4;
+        padding: 4px 10px;
+        font-size: 11px;
+}
+
+/* Histórico de Batalhas */
+.history-section {
+        margin-top: 25px;
+        background: #11111b;
+        border: 1px solid #313244;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: left;
+}
+
+.history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #313244;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+}
+
+.history-header h3 {
+        margin: 0;
+        font-size: 15px;
+        color: #cdd6f4;
+}
+
+.scoreboard {
+        font-size: 13px;
+        color: #a6adc8;
+}
+
+.scoreboard .wins {
+        color: #a6e3a1;
+        font-weight: bold;
+}
+
+.scoreboard .losses {
+        color: #f38ba8;
+        font-weight: bold;
+}
+
+.history-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 180px;
+        overflow-y: auto;
+}
+
+.history-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        border-bottom: 1px solid #1e1e2e;
+        font-size: 13px;
+}
+
+.history-item:last-child {
+        border-bottom: none;
+}
+
+.badge-win {
+        background: rgba(166, 227, 161, 0.15);
+        color: #a6e3a1;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 12px;
+}
+
+.badge-loss {
+        background: rgba(243, 139, 168, 0.15);
+        color: #f38ba8;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 12px;
+}
+
+/* Cabeçalho da Batalha */
+.battle-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #313244;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        font-size: 14px;
+}
+
+/* Arena Horizontal */
+.arena-horizontal {
+        display: flex;
+        flex-direction: column;
+        background: #181825;
+        border: 2px solid #313244;
+        border-radius: 8px;
+        padding: 20px;
+}
+
+.team-zone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+.zone-label {
+        font-size: 13px;
+        color: #a6adc8;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+}
+
+.squares-row {
+        display: flex;
+        flex-direction: row;
+        gap: 14px;
+        justify-content: center;
+        width: 100%;
+}
+
+.unit-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        background: #11111b;
+        padding: 12px 10px;
+        border-radius: 6px;
+        border: 2px solid #313244;
+        flex: 1;
+        max-width: 195px;
+        cursor: pointer;
+        transition: 0.15s ease;
+}
+
+.unit-wrapper:hover:not(.fainted) {
+        border-color: #89b4fa;
+        transform: translateY(-3px);
+}
+
+.unit-wrapper.selected-attacker {
+        border-color: #f9e2af;
+        background: #242438;
+        transform: translateY(-4px);
+}
+
+.unit-wrapper.targetable:hover:not(.fainted) {
+        border-color: #f38ba8;
+        background: #2a1b24;
+}
+
+.unit-wrapper.fainted {
+        opacity: 0.35;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+}
+
+.color-square {
+        width: 48px;
+        height: 48px;
+        border-radius: 4px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        box-sizing: border-box;
+}
+
+.unit-info {
+        width: 100%;
+}
+
+.unit-name {
+        font-weight: bold;
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+}
+
+.hp-bar-bg {
+        width: 100%;
+        height: 8px;
+        background: #313244;
+        border-radius: 4px;
+        margin-top: 6px;
+        overflow: hidden;
+}
+
+.hp-bar-fill {
+        height: 100%;
+        background: #a6e3a1;
+        transition: width 0.3s ease;
+}
+
+/* Mini-badges de atributos */
+.stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+        margin-top: 8px;
+        font-size: 10px;
+        background: #181825;
+        padding: 5px 4px;
+        border-radius: 4px;
+        color: #a6adc8;
+}
+
+.stat-max {
+        color: #a6e3a1;
+        font-weight: bold;
+}
+
+.stat-min {
+        color: #f38ba8;
+        font-weight: bold;
+}
+
+.divider {
+        border-top: 1px dashed #45475a;
+        margin: 18px 0;
+        text-align: center;
+        position: relative;
+}
+
+.divider span {
+        background: #181825;
+        padding: 0 10px;
+        font-size: 11px;
+        color: #6c7086;
+        position: relative;
+        top: -9px;
+        font-weight: bold;
+}
+
+/* Painel de Ações */
+.controls-panel {
+        margin-top: 15px;
+        background: #11111b;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #313244;
+        text-align: center;
+}
+
+.instruction-text {
+        font-size: 14px;
+        color: #f9e2af;
+        margin-bottom: 10px;
+        font-weight: bold;
+}
+
+.moves-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+}
+
+.move-btn.selected-move {
+        outline: 3px solid #f9e2af;
+}
+
+#log {
+        background: #11111b;
+        padding: 12px;
+        height: 135px;
+        overflow-y: auto;
+        border-radius: 6px;
+        border: 1px solid #313244;
+        font-family: monospace;
+        font-size: 13px;
+        margin-top: 15px;
+        line-height: 1.5;
+}

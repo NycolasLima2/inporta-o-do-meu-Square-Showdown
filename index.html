@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Square Showdown 3v3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- LOBBY + HISTÓRICO -->
+        <div id="lobbyScreen">
+            <div class="login-box">
+                <h1>Square Showdown 3v3</h1>
+                <p>Digite seu nome para entrar na arena horizontal</p>
+                <input type="text" id="playerNameInput" placeholder="Seu nome..." maxlength="15">
+                <button id="btnFindMatch">Buscar Partida</button>
+                <p id="statusText" style="margin-top: 15px; color: #a6adc8;"></p>
+            </div>
+
+            <div class="history-section">
+                <div class="history-header">
+                    <h3>📜 Histórico de Batalhas</h3>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="scoreboard" id="scoreboardText">0V - 0D</span>
+                        <button id="btnClearHistory" class="btn-clear">Limpar</button>
+                    </div>
+                </div>
+                <ul id="historyList" class="history-list"></ul>
+            </div>
+        </div>
+
+        <!-- ARENA -->
+        <div id="battleScreen" class="hidden">
+            <div class="battle-header">
+                <span>Sala: <strong id="roomDisplay"></strong></span>
+                <span>Turno: <strong id="turnDisplay">1</strong></span>
+                <button id="btnLeaveMatch" class="btn-danger">Desistir da Partida</button>
+            </div>
+
+            <div class="arena-horizontal">
+                <div class="team-zone">
+                    <div class="zone-label" id="enemyNameDisplay">Oponente</div>
+                    <div id="enemySquaresRow" class="squares-row"></div>
+                </div>
+
+                <div class="divider"><span>VS</span></div>
+
+                <div class="team-zone">
+                    <div id="mySquaresRow" class="squares-row"></div>
+                    <div class="zone-label" style="margin-top: 10px; margin-bottom: 0;" id="myNameDisplay">Você</div>
+                </div>
+            </div>
+
+            <!-- CONTROLES DE TURNO -->
+            <div class="controls-panel">
+                <div id="instructionText" class="instruction-text">1. Clique em um dos seus quadrados para atacar</div>
+                <div id="movesContainer" class="moves-container"></div>
+            </div>
+
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
