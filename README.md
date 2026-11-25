@@ -1,1 +1,1 @@
-# inporta-o-do-meu-Square-Showdown
+# import-o-do-meu-Square-Showdown
